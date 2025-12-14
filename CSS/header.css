@@ -1,0 +1,71 @@
+.header-content {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    background-color: var(--color-second);
+    padding: 20px 0;
+    border-bottom: 1px solid #e7e7e7;
+}
+
+.header-content a {
+    font-size: 30px;
+    font-family: "Be VietNam Pro", "sans-serif";
+    font-weight: bold;
+    color: var(--color-text);
+}
+
+#logo {
+    color: var(--color-text);
+}
+
+.nav-bar{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: var(--color-primary);
+    padding: 20px 0;
+    border-bottom: 1px solid #e7e7e7;;
+    a{
+        font-size: 15px;
+        font-family: "Be VietNam Pro", "sans-serif";
+        font-weight: bold;
+        color: #333;
+        margin-left: 100px;
+        margin-right: 100px;
+    }
+}
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+#search {
+    width: 500px;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+}
+
+.button {
+    display: flex;
+    gap: 10px;
+}
+
+.button button, .button a {
+    padding: 10px 20px;
+    border-radius: 10px;
+    cursor: pointer;
+    font-family: "Be VietNam Pro", "sans-serif";
+    font-weight: bold;
+    text-decoration: none;
+    color: white;
+}
+
+.button .btn-cart {
+    background-color:transparent;
+    border: 2px solid white;
+}
+
+.button .btn-login{
+    background-color: var(--color-three);
+    border: none;
+}

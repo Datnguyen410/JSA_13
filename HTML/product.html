@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Product</title>
+    <link rel="stylesheet" href="../CSS/product.css" />
+    <link rel="stylesheet" href="../CSS/global.css" />
+    <link rel="stylesheet" href="../CSS/header.css" />
+    <link rel="stylesheet" href="../CSS/footer.css" />
+  </head>
+
+  <body>
+    <header>
+      <div class="container">
+        <div class="header-content">
+          <a id="logo" href="./mainpage.html">🍜 Vị Nhà</a>
+
+          <input
+            type="text"
+            id="search"
+            placeholder="Tìm lại hương vị truyền thống .."
+          />
+
+          <div class="button">
+            <button class="btn-cart">Giỏ hàng</button>
+            <button class="btn-login">Đăng nhập</button>
+          </div>
+        </div>
+
+        <div class="nav-bar">
+          <a href="../HTML/mainpage.html">Trang Chủ</a>
+          <a href="../HTML/product.html">Sản Phẩm</a>
+          <a href="#">Giỏ hàng</a>
+          <a href="../HTML/Register.html">Tài khoản</a>
+        </div>
+      </div>
+    </header>
+    <div class = "Name_product">Món ăn</div>
+    <div class="product_list"></div>
+    <footer>
+      <div class="footer">
+        <div class="container">
+          <div class="footer-column">
+            <h4>Về Vị Nhà</h4>
+            <p>
+              Vị Nhà là nơi mang đến những món ăn truyền thống Việt Nam, được
+              chế biến từ những nguyên liệu tươi ngon nhất, giữ trọn hương vị
+              quê nhà.
+            </p>
+          </div>
+          <div class="footer-.column">
+            <h4>Liên hệ</h4>
+            <p>
+              <i class="fa-solid fa-location-dot"></i> 123 Hoàn Kiếm , Hà Nội
+            </p>
+            <p><i class="fa-solid fa-phone"></i> 0123 456 789</p>
+            <p><i class="fa-solid fa-envelope"></i> support@vinha.com</p>
+          </div>
+          <div class="footer-column">
+            <h4>Liên kết nhanh</h4>
+            <ul>
+              <li><a href="./mainpage.html">Trang Chủ</a></li>
+              <li><a href="./product.html">Sản Phẩm</a></li>
+              <li><a href="">Giỏ hàng</a></li>
+            </ul>
+          </div>
+          <div class="footer-column">
+            <h4>Theo dõi chúng tôi</h4>
+            <div class="social-icons">
+              <a href="#"><i class="fa-brands fa-facebook-f"></i></a>
+              <a href="#"><i class="fa-brands fa-twitter"></i></a>
+              <a href="#"><i class="fa-brands fa-instagram"></i></a>
+              <a href="#"><i class="fa-brands fa-linkedin-in"></i></a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </footer>
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        const productList = document.querySelector(".product_list");
+
+        fetch("https://6922d18909df4a49232364e8.mockapi.io/api/product")
+          .then((res) => {
+            if (!res.ok) throw new Error("Fetch failed");
+            return res.json();
+          })
+          .then((tasks) => {
+            if (!Array.isArray(tasks) || tasks.length === 0) {
+              productList.innerHTML = "<p>Không có sản phẩm</p>";
+              return;
+            }
+
+            let html = "";
+
+            for (let i = 0; i < tasks.length; i++) {
+              html += `
+            <div class="box-item">
+              <img src="${tasks[i].img}" alt="product image" />
+              <h2>${tasks[i].name}</h2>
+              <p>Giá: ${tasks[i].price} VNĐ</p>
+              <span>Mô tả: ${tasks[i].describe}</span>
+              <button class="add-to-cart-btn">Thêm vào giỏ</button>
+            </div>
+          `;
+            }
+
+            productList.innerHTML = html;
+          })
+          .catch((err) => {
+            console.error(err);
+            productList.innerHTML = "<p>Lỗi tải dữ liệu</p>";
+          });
+      });
+    </script>
+  </body>
+</html>

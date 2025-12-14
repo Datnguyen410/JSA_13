@@ -1,0 +1,18 @@
+@import url('https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Roboto:ital,wght@0,100..900;1,100..900&family=Sedgwick+Ave&family=Ubuntu:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&display=swap');
+
+:root{
+    --color-primary : #66bb6a;
+    --color-second : #429545;
+    --color-three : #F57C00;
+    --color-text : #fed95f;
+    --color-text-format : #2E7D32;
+    --color-tiny : #8f8f8f;
+}
+a{
+    text-decoration: none;
+    color: white;
+}
+.footer-bottom p {
+    font-size: 14px;
+    color: white;
+    }

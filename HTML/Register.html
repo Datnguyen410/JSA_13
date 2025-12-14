@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Vị Nhà</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+      integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <link rel="stylesheet" href="../CSS/global.css" />
+    <link rel="stylesheet" href="../CSS/header.css" />
+    <link rel="stylesheet" href="../CSS/signin-signup.css" />
+    <link rel="stylesheet" href="../CSS/footer.css" />
+  </head>
+  <body>
+    <header>
+      <div class="container">
+        <div class="header-content">
+          <a id="logo" href="./mainpage.html"> 🍜Vị Nhà</a>
+          <input
+            type="text"
+            id="search"
+            placeholder="Tìm lại hương vị truyền thống .."
+          />
+          <div class="button">
+            <button class="btn-cart">Giỏ hàng</button>
+            <button class="btn-login">Đăng nhập</button>
+          </div>
+        </div>
+        <div class="nav-bar">
+          <a href="../HTML/mainpage.html">Trang Chủ</a>
+          <a href="../HTML/product.html">Sản Phẩm</a>
+          <a href="">Giỏ hàng</a>
+          <a href="">Tài khoản</a>
+        </div>
+      </div>
+    </header>
+
+    <div class="form-container">
+      <div class="form-toggle">
+        <button id="login-toggle" class="active">Đăng nhập</button>
+        <button id="signup-toggle">Đăng ký</button>
+      </div>
+
+      <div id="login-form">
+        <form id="form-login">
+          <input
+            id="login-username"
+            type="text"
+            placeholder="Tên đăng nhập hoặc email"
+            required
+          />
+          <div
+            id="login-username-error"
+            class="error-message"
+            aria-live="polite"
+          ></div>
+
+          <input
+            id="login-password"
+            type="password"
+            placeholder="Mật khẩu"
+            required
+          />
+          <div
+            id="login-password-error"
+            class="error-message"
+            aria-live="polite"
+          ></div>
+
+          <div id="login-message" class="form-message" aria-live="polite"></div>
+
+          <button type="submit" class="btn-submit">Đăng nhập</button>
+          <a href="" class="forgot-password">Quên mật khẩu?</a>
+        </form>
+      </div>
+
+      <div id="signup-form" style="display: none">
+        <form id="form-signup">
+          <input id="fullname" type="text" placeholder="Họ và tên" />
+          <div
+            id="fullname-error"
+            class="error-message"
+            aria-live="polite"
+          ></div>
+
+          <input id="username" type="text" placeholder="Tên đăng nhập" />
+          <div
+            id="username-error"
+            class="error-message"
+            aria-live="polite"
+          ></div>
+
+          <input id="email" type="email" placeholder="Email" />
+          <div
+            id="email-error"
+            class="error-message"
+            aria-live="polite"
+          ></div>
+
+          <input id="password" type="password" placeholder="Mật khẩu" />
+          <div
+            id="password-error"
+            class="error-message"
+            aria-live="polite"
+          ></div>
+
+          <input
+            id="confirm-password"
+            type="password"
+            placeholder="Xác nhận mật khẩu"
+          />
+          <div
+            id="confirm-password-error"
+            class="error-message"
+            aria-live="polite"
+          ></div>
+
+          <div id="message" class="form-message" aria-live="polite"></div>
+
+          <button type="submit" class="btn-submit">Đăng ký</button>
+        </form>
+      </div>
+    </div>
+
+    <footer>
+      <div class="footer">
+        <div class="container">
+          <div class="footer-column">
+            <h4>Về Vị Nhà</h4>
+            <p>
+              Vị Nhà là nơi mang đến những món ăn truyền thống Việt Nam, được
+              chế biến từ những nguyên liệu tươi ngon nhất, giữ trọn hương vị
+              quê nhà.
+            </p>
+          </div>
+          <div class="footer-.column">
+            <h4>Liên hệ</h4>
+            <p>
+              <i class="fa-solid fa-location-dot"></i> 123 Hoàn Kiếm , Hà Nội
+            </p>
+            <p><i class="fa-solid fa-phone"></i> 0123 456 789</p>
+            <p><i class="fa-solid fa-envelope"></i> support@vinha.com</p>
+          </div>
+          <div class="footer-column">
+            <h4>Liên kết nhanh</h4>
+            <ul>
+              <li><a href="./mainpage.html">Trang Chủ</a></li>
+              <li><a href="./product.html">Sản Phẩm</a></li>
+              <li><a href="">Giỏ hàng</a></li>
+            </ul>
+          </div>
+          <div class="footer-column">
+            <h4>Theo dõi chúng tôi</h4>
+            <div class="social-icons">
+              <a href="#"><i class="fa-brands fa-facebook-f"></i></a>
+              <a href="#"><i class="fa-brands fa-twitter"></i></a>
+              <a href="#"><i class="fa-brands fa-instagram"></i></a>
+              <a href="#"><i class="fa-brands fa-linkedin-in"></i></a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </footer>
+    <script src="../JS/signin-signup.js"></script>
+  </body>
+</html>
