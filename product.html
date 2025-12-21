@@ -8,6 +8,10 @@
     <link rel="stylesheet" href="../CSS/global.css" />
     <link rel="stylesheet" href="../CSS/header.css" />
     <link rel="stylesheet" href="../CSS/footer.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+    />
   </head>
 
   <body>
@@ -29,15 +33,28 @@
         </div>
 
         <div class="nav-bar">
-          <a href="../HTML/mainpage.html">Trang Chủ</a>
-          <a href="../HTML/product.html">Sản Phẩm</a>
-          <a href="#">Giỏ hàng</a>
-          <a href="../HTML/Register.html">Tài khoản</a>
+          <a href="../mainpage.html">Trang Chủ</a>
+          <a href="../product.html">Sản Phẩm</a>
+          <a href="../cart.html">Giỏ hàng</a>
+          <a href="../Register.html">Tài khoản</a>
         </div>
       </div>
     </header>
-    <div class = "Name_product">Món ăn</div>
-    <div class="product_list"></div>
+    <div class="Name_product">Món Bắc</div>
+    <div class="product_Northern"></div>
+    <div class="Name_product">Món Trung</div>
+    <div class="product_Central"></div>
+    <div class="Name_product">Món Nam</div>
+    <div class="product_Southern"></div>
+
+    <div id="detail-modal" class="modal">
+      <div class="modal-content">
+        <span class="close-btn">&times;</span>
+        <h2>Chi tiết sản phẩm</h2>
+        <p id="modal-detail-content"></p>
+      </div>
+    </div>
+
     <footer>
       <div class="footer">
         <div class="container">
@@ -49,7 +66,7 @@
               quê nhà.
             </p>
           </div>
-          <div class="footer-.column">
+          <div class="footer-column">
             <h4>Liên hệ</h4>
             <p>
               <i class="fa-solid fa-location-dot"></i> 123 Hoàn Kiếm , Hà Nội
@@ -62,7 +79,7 @@
             <ul>
               <li><a href="./mainpage.html">Trang Chủ</a></li>
               <li><a href="./product.html">Sản Phẩm</a></li>
-              <li><a href="">Giỏ hàng</a></li>
+              <li><a href="../HTML/cart.html">Giỏ hàng</a></li>
             </ul>
           </div>
           <div class="footer-column">
@@ -77,42 +94,18 @@
         </div>
       </div>
     </footer>
+    <script src="../JS/product.js"></script>
     <script>
-      document.addEventListener("DOMContentLoaded", function () {
-        const productList = document.querySelector(".product_list");
-
-        fetch("https://6922d18909df4a49232364e8.mockapi.io/api/product")
-          .then((res) => {
-            if (!res.ok) throw new Error("Fetch failed");
-            return res.json();
-          })
-          .then((tasks) => {
-            if (!Array.isArray(tasks) || tasks.length === 0) {
-              productList.innerHTML = "<p>Không có sản phẩm</p>";
-              return;
-            }
-
-            let html = "";
-
-            for (let i = 0; i < tasks.length; i++) {
-              html += `
-            <div class="box-item">
-              <img src="${tasks[i].img}" alt="product image" />
-              <h2>${tasks[i].name}</h2>
-              <p>Giá: ${tasks[i].price} VNĐ</p>
-              <span>Mô tả: ${tasks[i].describe}</span>
-              <button class="add-to-cart-btn">Thêm vào giỏ</button>
-            </div>
-          `;
-            }
-
-            productList.innerHTML = html;
-          })
-          .catch((err) => {
-            console.error(err);
-            productList.innerHTML = "<p>Lỗi tải dữ liệu</p>";
-          });
-      });
+      document
+        .querySelector(".btn-cart")
+        .addEventListener("click", function () {
+          window.location.href = "./cart.html";
+        });
+      document
+        .querySelector(".btn-login")
+        .addEventListener("click", function () {
+          window.location.href = "./Register.html";
+        });
     </script>
   </body>
 </html>

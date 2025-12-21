@@ -36,10 +36,10 @@
           </div>
         </div>
         <div class="nav-bar">
-          <a href="../HTML/mainpage.html">Trang Chủ</a>
-          <a href="../HTML/product.html">Sản Phẩm</a>
-          <a href="">Giỏ hàng</a>
-          <a href="">Tài khoản</a>
+          <a href="../mainpage.html">Trang Chủ</a>
+          <a href="../product.html">Sản Phẩm</a>
+          <a href="../cart.html">Giỏ hàng</a>
+          <a href="../Register.html">Tài khoản</a>
         </div>
       </div>
     </header>
@@ -171,5 +171,13 @@
       </div>
     </footer>
     <script src="../JS/signin-signup.js"></script>
+        <script>
+      document.querySelector('.btn-cart').addEventListener('click', function() {
+        window.location.href = './cart.html';
+      });
+      document.querySelector('.btn-login').addEventListener('click', function() {
+        window.location.href = './Register.html';
+      });
+    </script>
   </body>
 </html>

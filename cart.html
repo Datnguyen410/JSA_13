@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Vị Nhà</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="../CSS/global.css" />
+    <link rel="stylesheet" href="../CSS/header.css" />
+    <link rel="stylesheet" href="../CSS/cart.css" />
+    <link rel="stylesheet" href="../CSS/footer.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
+    />
+  </head>
+  <body>
+    <header>
+      <div class="container">
+        <div class="header-content">
+          <a id="logo" href="./mainpage.html">🍜Vị Nhà</a>
+          <input
+            type="text"
+            id="search"
+            placeholder="Tìm lại hương vị truyền thống .."
+          />
+          <div class="button">
+            <button class="btn-cart">Giỏ hàng</button>
+            <button class="btn-login">Đăng nhập</button>
+          </div>
+        </div>
+        <div class="nav-bar">
+          <a href="../mainpage.html">Trang Chủ</a>
+          <a href="../product.html">Sản Phẩm</a>
+          <a href="./cart.html">Giỏ hàng</a>
+          <a href="../SPCK/Register.html">Tài khoản</a>
+        </div>
+      </div>
+    </header>
+    <b></b>
+    <div class="cart-container">
+      <h1>Giỏ hàng của bạn</h1>
+      <div class="cart-items">
+        <!-- Cart items will be dynamically inserted here -->
+         <!-- <div class ="cart-total-price"></div> -->
+      </div>
+      <div class="cart-summary">
+        <p>Tổng cộng: <span id="cart-total">0đ</span></p>
+        <button class="btn-checkout">Thanh toán</button>
+      </div>
+    </div>
+
+    <footer>
+      <div class="footer">
+        <div class="container">
+          <div class="footer-column">
+            <h4>Về Vị Nhà</h4>
+            <p>
+              Vị Nhà là nơi mang đến những món ăn truyền thống Việt Nam, được
+              chế biến từ những nguyên liệu tươi ngon nhất, giữ trọn hương vị
+              quê nhà.
+            </p>
+          </div>
+          <div class="footer-column">
+            <h4>Liên hệ</h4>
+            <p>
+              <i class="fa-solid fa-location-dot"></i> 123 Hoàn Kiếm , Hà Nội
+            </p>
+            <p><i class="fa-solid fa-phone"></i> 0123 456 789</p>
+            <p><i class="fa-solid fa-envelope"></i> support@vinha.com</p>
+          </div>
+          <div class="footer-column">
+            <h4>Liên kết nhanh</h4>
+            <ul>
+              <li><a href="./mainpage.html">Trang Chủ</a></li>
+              <li><a href="./item.html">Sản Phẩm</a></li>
+              <li><a href="./cart.html">Giỏ hàng</a></li>
+            </ul>
+          </div>
+          <div class="footer-column">
+            <h4>Theo dõi chúng tôi</h4>
+            <div class="social-icons">
+              <a href="#"><i class="fa-brands fa-facebook"></i></a>
+              <a href="#"><i class="fa-brands fa-instagram"></i></a>
+              <a href="#"><i class="fa-brands fa-twitter"></i></a>
+            </div>
+          </div>
+        </div>
+        <div class="footer-bottom">
+          <p>&copy; 2025 Vị Nhà. All rights reserved.</p>
+        </div>
+      </div>
+    </footer>
+      document.addEventListener("DOMContentLoaded", function () {
+        const productNorthern = document.querySelector(".product_Northern");
+        const productCentral = document.querySelector(".product_Central");
+        const productSouthern = document.querySelector(".product_Southern");
+        const modal = document.getElementById("detail-modal");
+        const modalContent = document.getElementById("modal-detail-content");
+        const closeBtn = document.querySelector(".close-btn");
+
+        const showModal = (detail) => {
+          modalContent.textContent = detail;
+          modal.style.display = "block";
+        };
+
+        const closeModal = () => {
+          modal.style.display = "none";
+        };
+
+        closeBtn.addEventListener("click", closeModal);
+        window.addEventListener("click", (event) => {
+          if (event.target == modal) {
+            closeModal();
+          }
+        });
+
+        const renderProducts = (element, category) => {
+          fetch(
+            `https://6922d18909df4a49232364e8.mockapi.io/api/product?category=${category}`
+          )
+            .then((res) => {
+              if (!res.ok) throw new Error("Fetch failed");
+              return res.json();
+            })
+            .then((tasks) => {
+              if (!Array.isArray(tasks) || tasks.length === 0) {
+                element.innerHTML = "<p>Không có sản phẩm</p>";
+                return;
+              }
+
+              let html = "";
+              tasks.forEach((task) => {
+                html += `
+                  <div class="box-item">
+                    <img src="${task.img}" alt="product image" />
+                    <h2>${task.name}</h2>
+                    <p>Giá: ${task.price} VNĐ</p>
+                    <span>Mô tả: ${task.describe}</span>
+                    <div class="buttons">
+                      <button 
+                         class="add-to-cart-btn"
+                          data-id="${task.id}"
+                          data-name="${task.name}"
+                          data-price="${task.price}"
+                          data-img="${task.img}"
+                        >
+                          Thêm vào giỏ
+                        </button>
+
+                      <button class="detail-btn" data-detail="${
+                        task.detail || "Không có chi tiết"
+                      }">Chi tiết</button>
+                    </div>
+                  </div>
+                `;
+              });
+              element.innerHTML = html;
+
+              element.querySelectorAll(".detail-btn").forEach((btn) => {
+                btn.addEventListener("click", () => {
+                  showModal(btn.dataset.detail);
+                });
+              });
+            })
+            .catch((err) => {
+              console.error(err);
+              element.innerHTML = "<p>Lỗi tải dữ liệu</p>";
+            });
+        };
+
+        renderProducts(productNorthern, "Món Bắc");
+        renderProducts(productCentral, "Món Trung");
+        renderProducts(productSouthern, "Món Nam");
+      });
+      // ===== CART LOGIC =====
+
+      // Lấy giỏ hàng
+      function getCart() {
+        return JSON.parse(localStorage.getItem("cart")) || [];
+      }
+
+      // Lưu giỏ hàng
+      function saveCart(cart) {
+        localStorage.setItem("cart", JSON.stringify(cart));
+      }
+
+      // Thêm sản phẩm vào giỏ
+      function addToCart(product) {
+        let cart = getCart();
+
+        let index = cart.findIndex((item) => item.id === product.id);
+
+        if (index === -1) {
+          cart.push({
+            ...product,
+            quantity: 1,
+          });
+        } else {
+          cart[index].quantity += 1;
+        }
+
+        saveCart(cart);
+        alert("Đã thêm vào giỏ hàng 🛒");
+      }
+
+      // Bắt sự kiện click nút thêm giỏ
+      document.addEventListener("click", function (e) {
+        if (e.target.classList.contains("add-to-cart-btn")) {
+          const btn = e.target;
+
+          const product = {
+            id: btn.dataset.id,
+            name: btn.dataset.name,
+            price: Number(btn.dataset.price),
+            img: btn.dataset.img,
+          };
+
+          addToCart(product);
+        }
+      });
+    </script> -->
+    <script>
+      document
+        .querySelector(".btn-cart")
+        .addEventListener("click", function () {
+          window.location.href = "./cart.html";
+        });
+      document
+        .querySelector(".btn-login")
+        .addEventListener("click", function () {
+          window.location.href = "./Register.html";
+        });
+    </script>
+    <script src="../JS/cart.js"></script>
+  </body>
+</html>

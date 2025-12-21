@@ -31,10 +31,10 @@
           </div>
         </div>
         <div class="nav-bar">
-          <a href="../HTML/mainpage.html">Trang Chủ</a>
-          <a href="../HTML/product.html">Sản Phẩm</a>
-          <a href="">Giỏ hàng</a>
-          <a href="../HTML/Register.html">Tài khoản</a>
+          <a href="../mainpage.html">Trang Chủ</a>
+          <a href="../product.html">Sản Phẩm</a>
+          <a href="../cart.html">Giỏ hàng</a>
+          <a href="../Register.html">Tài khoản</a>
         </div>
       </div>
     </header>
@@ -76,7 +76,7 @@
         <span class="carousel-control-next-icon"></span>
       </button>
     </div>
-<footer>
+    <footer>
       <div class="footer">
         <div class="container">
           <div class="footer-column">
@@ -120,5 +120,17 @@
       integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
       crossorigin="anonymous"
     ></script>
+    <script>
+      document
+        .querySelector(".btn-cart")
+        .addEventListener("click", function () {
+          window.location.href = "./cart.html";
+        });
+      document
+        .querySelector(".btn-login")
+        .addEventListener("click", function () {
+          window.location.href = "./Register.html";
+        });
+    </script>
   </body>
 </html>

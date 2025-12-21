@@ -8,14 +8,15 @@ body {
 }
 
 /* Main Product Container */
-.product_list {
+.product_Northern,
+.product_Central,
+.product_Southern {
   display: grid;
-  /* Create a responsive grid that fills the space */
   grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-  gap: 2rem; /* Increased gap for better spacing */
+  gap: 2rem;
   padding: 2rem;
   max-width: 1200px;
-  margin: 2rem auto; /* Center the grid on the page */
+  margin: 2rem auto;
   background-color: #ffffff;
   border-radius: 10px;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
@@ -30,21 +31,21 @@ body {
   text-align: center;
   display: flex;
   flex-direction: column;
-  justify-content: space-between; /* Ensures footer content (button) is at the bottom */
+  justify-content: space-between;
   transition: transform 0.3s ease, box-shadow 0.3s ease;
-  overflow: hidden; /* Keeps image corners rounded */
+  overflow: hidden;
 }
 
 .box-item:hover {
-  transform: translateY(-10px); /* Lifts the card on hover */
+  transform: translateY(-10px);
   box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
 }
 
 /* Product Image */
 .box-item img {
   max-width: 100%;
-  height: 200px; /* Fixed height for uniform look */
-  object-fit: cover; /* Ensures image covers the area without distortion */
+  height: 200px;
+  object-fit: cover;
   border-radius: 8px;
   margin-bottom: 1.5rem;
 }
@@ -53,7 +54,7 @@ body {
 .box-item h2 {
   font-size: 1.25rem;
   font-weight: 600;
-  margin: 0 0 0.5rem 0; /* Adjusted margin */
+  margin: 0 0 0.5rem 0;
   color: #2c3e50;
 }
 
@@ -61,7 +62,7 @@ body {
 .box-item p {
   font-size: 1.1rem;
   font-weight: 700;
-  color: #e74c3c; /* A distinct color for the price */
+  color: #e74c3c;
   margin: 0 0 1rem 0;
 }
 
@@ -69,33 +70,115 @@ body {
 .box-item span {
   font-size: 0.9rem;
   color: #7f8c8d;
-  flex-grow: 1; /* Allows description to take available space */
+  flex-grow: 1;
   margin-bottom: 1.5rem;
+}
+
+/* Buttons Container */
+.buttons {
+  display: flex;
+  gap: 0.5rem;
+  margin-top: 1rem;
+}
+
+/* Generic Button Styles */
+.add-to-cart-btn,
+.detail-btn {
+  border: none;
+  padding: 0.75rem;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 0.9rem;
+  font-weight: 500;
+  transition: background-color 0.3s ease, color 0.3s ease;
+  width: 100%;
 }
 
 /* Add to Cart Button */
 .add-to-cart-btn {
   background-color: #3498db;
   color: #fff;
-  border: none;
-  padding: 0.75rem 1.5rem;
-  border-radius: 5px;
-  cursor: pointer;
-  font-size: 1rem;
-  font-weight: 500;
-  transition: background-color 0.3s ease;
-  align-self: center; /* Center button in the flex container */
-  width: 100%;
 }
 
 .add-to-cart-btn:hover {
   background-color: #2980b9;
 }
 
+/* Detail Button */
+.detail-btn {
+  background-color: #f1c40f;
+  color: #fff;
+}
+
+.detail-btn:hover {
+  background-color: #f39c12;
+}
+
+
 /* Fallback messages */
 .product_list p {
-  grid-column: 1 / -1; /* Span full width if no products */
+  grid-column: 1 / -1;
   text-align: center;
   font-size: 1.2rem;
   color: #95a5a6;
+}
+
+
+/* Modal Styles */
+.modal {
+  display: none; /* Hidden by default */
+  position: fixed;
+  z-index: 1000;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: rgba(0,0,0,0.5); /* Black w/ opacity */
+}
+
+.modal-content {
+  background-color: #fefefe;
+  margin: 15% auto;
+  padding: 2rem;
+  border: 1px solid #888;
+  width: 80%;
+  max-width: 500px;
+  border-radius: 10px;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+  position: relative;
+  animation: fadeIn 0.3s;
+}
+
+@keyframes fadeIn {
+  from {opacity: 0}
+  to {opacity: 1}
+}
+
+.close-btn {
+  color: #aaa;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+  position: absolute;
+  top: 10px;
+  right: 20px;
+}
+
+.close-btn:hover,
+.close-btn:focus {
+  color: black;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.modal-content h2 {
+  margin-top: 0;
+  color: #2c3e50;
+}
+
+#modal-detail-content {
+  font-size: 1rem;
+  line-height: 1.6;
+  color: #333;
 }
