@@ -1,9 +1,136 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <meta http-equiv="refresh" content="0; url=./HTML/mainpage.html" />
-    <title>Redirect</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH"
+      crossorigin="anonymous"
+    />
+    <link rel="stylesheet" href="../CSS/global.css" />
+    <link rel="stylesheet" href="../CSS/header.css" />
+    <link rel="stylesheet" href="../CSS/footer.css" />
+    <link rel="stylesheet" href="../CSS/main.css" />
   </head>
-  <body></body>
+  <body>
+    <header>
+      <div class="container">
+        <div class="header-content">
+          <a id="logo" href="./index.html"> 🍜Vị Nhà</a>
+          <input
+            type="text"
+            id="search"
+            placeholder="Tìm lại hương vị truyền thống .."
+          />
+          <div class="button">
+            <button class="btn-cart">Giỏ hàng</button>
+            <button class="btn-login">Đăng nhập</button>
+          </div>
+        </div>
+        <div class="nav-bar">
+          <a href="../index.html">Trang Chủ</a>
+          <a href="../product.html">Sản Phẩm</a>
+          <a href="../cart.html">Giỏ hàng</a>
+          <a href="../Register.html">Tài khoản</a>
+        </div>
+      </div>
+    </header>
+    <div
+      id="mainCarousel"
+      class="carousel slide container mt-4"
+      data-bs-ride="carousel"
+    >
+      <div class="carousel-inner">
+        <div class="carousel-item active">
+          <img
+            src="../img/grabfood-khuyen-mai-anh-bia-3-11-24.jpg"
+            class="d-block w-100"
+            alt="customer support"
+          />
+        </div>
+        <div class="carousel-item">
+          <img
+            src="../img/PUSH_GF-EXP-_-Com-chuan-no-lai-re-2-1.jpg"
+            class="d-block w-100"
+            alt="Shop"
+          />
+        </div>
+      </div>
+      <button
+        class="carousel-control-prev"
+        type="button"
+        data-bs-target="#mainCarousel"
+        data-bs-slide="prev"
+      >
+        <span class="carousel-control-prev-icon"></span>
+      </button>
+      <button
+        class="carousel-control-next"
+        type="button"
+        data-bs-target="#mainCarousel"
+        data-bs-slide="next"
+      >
+        <span class="carousel-control-next-icon"></span>
+      </button>
+    </div>
+    <footer>
+      <div class="footer">
+        <div class="container">
+          <div class="footer-column">
+            <h4>Về Vị Nhà</h4>
+            <p>
+              Vị Nhà là nơi mang đến những món ăn truyền thống Việt Nam, được
+              chế biến từ những nguyên liệu tươi ngon nhất, giữ trọn hương vị
+              quê nhà.
+            </p>
+          </div>
+          <div class="footer-column">
+            <h4>Liên hệ</h4>
+            <p>
+              <i class="fa-solid fa-location-dot"></i> 123 Hoàn Kiếm , Hà Nội
+            </p>
+            <p><i class="fa-solid fa-phone"></i> 0123 456 789</p>
+            <p><i class="fa-solid fa-envelope"></i> support@vinha.com</p>
+          </div>
+          <div class="footer-column">
+            <h4>Liên kết nhanh</h4>
+            <ul>
+              <li><a href="./mainpage.html">Trang Chủ</a></li>
+              <li><a href="./item.html">Sản Phẩm</a></li>
+              <li><a href="./cart.html">Giỏ hàng</a></li>
+            </ul>
+          </div>
+          <div class="footer-column">
+            <h4>Theo dõi chúng tôi</h4>
+            <div class="social-icons">
+              <a href="#"><i class="fa-brands fa-facebook-f"></i></a>
+              <a href="#"><i class="fa-brands fa-twitter"></i></a>
+              <a href="#"><i class="fa-brands fa-instagram"></i></a>
+              <a href="#"><i class="fa-brands fa-linkedin-in"></i></a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </footer>
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
+      crossorigin="anonymous"
+    ></script>
+    <script>
+      document
+        .querySelector(".btn-cart")
+        .addEventListener("click", function () {
+          window.location.href = "./cart.html";
+        });
+      document
+        .querySelector(".btn-login")
+        .addEventListener("click", function () {
+          window.location.href = "./Register.html";
+        });
+    </script>
+  </body>
 </html>
