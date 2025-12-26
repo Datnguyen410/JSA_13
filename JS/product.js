@@ -23,7 +23,7 @@ document.addEventListener("DOMContentLoaded", function () {
   });
 
   const renderProducts = (element, category) => {
-    fetch(`https://6922d18909df4a49232364e8.mockapi.io/api/product?category`)
+    fetch(`https://6922d18909df4a49232364e8.mockapi.io/api/product?category=${category}`)
       .then((res) => {
         if (!res.ok) throw new Error("Fetch failed");
         return res.json();

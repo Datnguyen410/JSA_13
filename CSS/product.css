@@ -41,6 +41,13 @@ body {
   box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
 }
 
+.Name_product {
+  font-size: 2rem;
+  text-align: center;
+  margin-bottom: 1rem;
+  color: #34495e;
+  font-weight: bold;
+}
 /* Product Image */
 .box-item img {
   max-width: 100%;
