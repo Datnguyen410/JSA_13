@@ -120,6 +120,9 @@ body {
 .detail-btn:hover {
   background-color: #f39c12;
 }
+#modal-detail-content {
+  white-space: pre-line; /* xuống dòng cho nội dung chi tiết  */
+}
 
 
 /* Fallback messages */

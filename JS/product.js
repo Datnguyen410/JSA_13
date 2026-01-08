@@ -3,12 +3,18 @@ document.addEventListener("DOMContentLoaded", function () {
   const productCentral = document.querySelector(".product_Central");
   const productSouthern = document.querySelector(".product_Southern");
   const modal = document.getElementById("detail-modal");
-  const modalContent = document.getElementById("modal-detail-content");
+  const modalImg = document.getElementById("modal-product-img");
+  const modalName = document.getElementById("modal-product-name");
+  const modalIngredients = document.getElementById("modal-product-ingredients");
+  const modalPrice = document.getElementById("modal-product-price");
   const closeBtn = document.querySelector(".close-btn");
 
-  const showModal = (detail) => {
-    modalContent.textContent = detail;
-    modal.style.display = "block";
+  const showModal = (product) => {
+    modalImg.src = product.img;
+    modalName.textContent = product.name;
+    modalIngredients.textContent = product.detail;
+    modalPrice.textContent = Number(product.price).toLocaleString();
+    modal.style.display = "flex";
   };
 
   const closeModal = () => {
@@ -23,7 +29,9 @@ document.addEventListener("DOMContentLoaded", function () {
   });
 
   const renderProducts = (element, category) => {
-    fetch(`https://6922d18909df4a49232364e8.mockapi.io/api/product?category=${category}`)
+    fetch(
+      `https://6922d18909df4a49232364e8.mockapi.io/api/product?category=${category}`
+    )
       .then((res) => {
         if (!res.ok) throw new Error("Fetch failed");
         return res.json();
@@ -53,9 +61,11 @@ document.addEventListener("DOMContentLoaded", function () {
                           Thêm vào giỏ
                         </button>
 
-                      <button class="detail-btn" data-detail="${
-                        task.detail || "Không có chi tiết"
-                      }">Chi tiết</button>
+                      <button class="detail-btn" 
+                        data-detail="${task.detail}" 
+                        data-img="${task.img}" 
+                        data-name="${task.name}"
+                        data-price="${task.price}">Chi tiết</button>
                     </div>
                   </div>
                 `;
@@ -64,7 +74,12 @@ document.addEventListener("DOMContentLoaded", function () {
 
         element.querySelectorAll(".detail-btn").forEach((btn) => {
           btn.addEventListener("click", () => {
-            showModal(btn.dataset.detail);
+            showModal({
+              img: btn.dataset.img,
+              name: btn.dataset.name,
+              detail: btn.dataset.detail,
+              price: btn.dataset.price
+            });
           });
         });
       })
